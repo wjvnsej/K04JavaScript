@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPSGame.html</title>
+</head>
+<body>
+    <script>
+
+        function rnd(imageNum_me){
+            var img_tag_com = document.getElementById("com");
+            var image_tag_me = document.getElementById("me");
+            var rndNum_com = parseInt((Math.random() * 3) + 1);
+            var resultStr = "";
+
+            switch(rndNum_com) {
+                case 1 : 
+                img_tag_com.src = "./images/scissors.jpg"; break;
+                case 2 : 
+                img_tag_com.src = "./images/rock.jpg"; break;
+                case 3 : 
+                img_tag_com.src = "./images/paper.jpg"; break;
+            }
+
+            switch(imageNum_me) {
+                case 1 : 
+                image_tag_me.src = "./images/scissors.jpg"; break;
+                case 2 : 
+                image_tag_me.src = "./images/rock.jpg"; break;
+                case 3 : 
+                image_tag_me.src = "./images/paper.jpg"; break;
+            }
+
+
+            if( !(imageNum_me<1 || imageNum_me>3) ) {
+				//승부판단로직
+				switch(imageNum_me - rndNum_com) {
+				case 0:
+                resultStr = "비겼습니다."; break;
+				case 1: case -2:
+                resultStr = "이겼습니다."; break;
+				case -1: case 2:
+                resultStr = "졌습니다."; break;
+                }
+            }
+            console.log(resultStr);
+            document.getElementById("result").innerHTML = resultStr;
+
+            
+        }
+    </script>
+
+    <h2>가위바위보게임</h2>
+    <fieldset>
+        <table border = "1" >
+            <tr>
+                <td>컴퓨터</td>
+                <td>나</td>
+            </tr>
+            <tr>
+                <td><img src="./images/start.png" id="com"></td>
+                <td><img src="./images/start.png" id="me" ></td>
+            </tr>
+            <tr >
+                <td colspan="2">
+                    <span id="result" style="font-size:1.5em; color:red;">
+                        <br>
+                    </span>
+                </td>
+            </tr>
+        </table>
+ 
+        <button id="scissors" onclick="rnd(1);">
+            가위
+        </button>
+        <button id="rock" onclick="rnd(2);">
+            바위
+        </button>
+        <button id="paper" onclick="rnd(3);">
+            보
+        </button>
+    </fieldset>
+</body>
+</html>
