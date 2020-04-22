@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J17CssControl.html</title>
+</head>
+<body>
+
+    <script>
+        var pTag, pSize;
+
+        window.onload = function() {
+            pTag = document.getElementById("article");
+            pSize = parseInt(pTag.style.fontSize);
+        }
+
+        function fnArticle(flag) {
+
+            switch(flag) {
+                case "+":
+                    pSize += 10;
+                    pTag.style.fontSize = pSize + "px";
+                    break;
+                case "-":
+                    pSize -= 10;
+                    pTag.style.fontSize = pSize + "px";
+                    break;
+                
+                case "R":
+                    pTag.style.color = "red";
+                    break;
+                
+                case "G":
+                    pTag.style.color = "green";
+                    break;
+                
+                case "B":
+                    pTag.style.color = "blue";
+                    break;
+                
+                case "Bo":   
+                    pTag.style.fontWeight = "bold";
+                    break;
+                
+                case "No":   
+                    pTag.style.fontWeight = "normal";
+                    break;
+                
+                case "Ce":   
+                    pTag.style.textAlign = "center";
+                    break;
+                
+                case "Le":   
+                    pTag.style.textAlign = "left";
+                    break;
+                default:
+                    pTag.style.color = "black";
+                
+            }
+
+
+        }
+
+
+
+        /*
+            문제] 글꼴바꾸기 버튼을 계속 누를때마다 아래 5가지
+            폰트가 토글되어 적용될수 있도록 함수를 정의하시오.
+            글꼴 : Verdana, 굴림체, 휴먼옛체, 궁서, Impact
+
+            function setFont(){
+                실행부;
+            }
+        */
+        var fontToggle = 0; //폰트 토글을 위한 전역변수
+        function setFont() {
+            // 문제에서 주어진 폰트를 배열로 선언
+            var fontArray = ["Verdana", "굴림체", "휴먼옛체", "궁서", "Impact"];
+            // 정수를 5로 나누면 나머지는 0~4까지 생성
+            var fontIndex = fontToggle % 5;
+            // 위에서 구한 수를 인덱스로 폰트 설정
+            pTag.style.fontFamily = fontArray[fontIndex];
+            // 함수를 호출할 때 마다 1증가
+            fontToggle++;
+        }
+
+    </script>
+
+    <h2>자바스크립트로 CSS제어하기</h2>
+    <input type="button" value="글꼴바꾸기" onclick="setFont();">
+    <fieldset>
+        <legend>신문기사</legend>
+        <button onclick="fnArticle('+');">+</button>
+        <button onclick="fnArticle('-');">-</button>
+        <button onclick="fnArticle('R');">Red</button>
+        <button onclick="fnArticle('G');">Green</button>
+        <button onclick="fnArticle('B');">Blue</button>
+        <button onclick="fnArticle('');">Black</button>
+        <button onclick="fnArticle('Bo');">볼드체</button>
+        <button onclick="fnArticle('No');">보통체</button>
+        <button onclick="fnArticle('Ce');">가운데정렬</button>
+        <button onclick="fnArticle('Le');">좌측정렬</button>
+    </fieldset>
+    <p style="font-size: 12px;" id="article">
+        오늘의 뉴스<br>
+        앙방역대책본부(방대본)는 이날 0시 기준 코로나19 확진자가 전날보다 11명 증가했다고 밝혔다.
+
+        일일 신규 확진자 수는 18일 18명, 19일 8명, 20일 13명, 21일 9명에 이어 5일째 10명 안팎을 유지 중이다.
+
+        이날 신규 확진자 중 3명은 대구(1명)와 경북(2명)에서 나왔다.
+
+        이어 서울 2명, 부산2명, 대전 1명, 경남 1명에서 신규 확진 환자가 발생했다.
+
+        검역 과정에서 확진된 사례는 2명이며 지역사회에서 해외유입 관련 확진 환자는 4명이 확인되면서 해외유입 사례가 6명으로 잠정 집계된 상태다.
+
+
+
+        완치 후 격리 해제된 환자는 64명이 늘어 8227명이 됐고 현재 격리 치료를 받는 사람은 2179명이다.
+
+        국내 확진자 중 여성이 6380명(59.66%)으로 남성 4314명(40.34%)보다 많았다.
+
+        현재 국내에서 확인된 사망자는 전날보다 1명이 늘어난 238명으로 집계됐다.
+
+        평균 치명률은 2.23%지만 60대에서 2.5%, 70대 10%, 80세 이상 23.4%로 고령일수록 크게 높아진다.
+
+        중앙방역대책본부는 매일 오전 10시 0시 기준 코로나19 일별 환자 현황을 발표한다.
+
+    </p>
+
+
+    
+        
+</body>
+</html>
