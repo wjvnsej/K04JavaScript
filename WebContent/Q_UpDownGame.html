@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q_UpDownGame.html</title>
+    
+    <style>
+        span {
+            font-size: 1.5em;
+        }
+        input[type="number"] { 
+            height: 20px; width: 80px;
+        }
+        input[type="button"] { 
+            height: 30px;
+        }
+        img {
+            width: 300px; height: 300px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <script>
+        var rndNum = 0;
+        var count = 0;
+
+        window.onload = function() {
+            rndNum = parseInt((Math.random() * 100) + 1);
+            console.log("정답 : ", rndNum);
+        }
+
+        var check = function (frm) {
+            var img = document.getElementById("img");
+            var count_print = document.getElementById("count");
+
+            if(!frm.num.value) {
+                alert("숫자를 입력하세요")
+                img.src = "./images/error.jpg";
+                return false;
+            }
+            if(frm.num.value <= 1 || frm.num.value >= 100) {
+                alert("1~100사이의 숫자를 입력하세요")
+                img.src = "./images/error.jpg";
+                return false;
+            }
+            if(frm.num.value < rndNum) {
+                img.src = "./images/up.jpg";
+                console.log("UP!!");
+                count++;
+            }
+            if(frm.num.value > rndNum) {
+                img.src = "./images/down.jpg";
+                console.log("DOWN!!");
+                count++;
+            }
+            if(frm.num.value == rndNum) {
+                // 1회만에 맞췄을 때
+                if(count == 0){
+                    count++;
+                    img.src = "./images/answer.jpeg";
+                    alert("** 정답입니다.**"); 
+                    console.log("** 정답입니다.**");
+                    console.log(count, "회에 맞춤");
+                }
+            }
+            if(count <= 7) {
+                count_print.innerHTML = count + "회";
+            }
+            else{
+                alert("시도횟수를 초과했습니다. 재시작합니다.");
+                location.reload();
+            }
+        }
+
+        function reload(){
+            alert("재시작합니다.");
+            location.reload();
+        }
+
+    </script>
+
+    <h1>업다운게임</h1>
+    <h2>1~100사이의 숫자를 입력하세요</h2>
+    
+    <form name="count_form">
+        <h2>시도횟수 : <span id="count">0회</span></h2>
+        <span style="font-size: 1.5em;">숫자입력 :</span>       
+         
+        <input type="number" name="num">
+
+        <input type="button" value="확인" onclick="check(this.form);">
+
+        <input type="button" id="restart" value="재시작" onclick="reload();">
+
+        <br><br><br>
+
+        <img src="./images/updowngame.jpg" id="img" alt="">
+
+    </form>
+
+</body>
+</html>

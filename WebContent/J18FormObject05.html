@@ -15,14 +15,14 @@
         function formValidate1(frm) {
             if(frm.id.value == "") {
                 alert("아이디를 입력하세요");
-                frm.id.focus();
+                frm.num.focus();
                 return false;
             }
         }
     </script>
 
     <form name="frm1" onsubmit = "return formValidate1(this)">
-        아이디 : <input type="text" name="id">
+        아이디 : <input type="text" name="num">
         <br>
         <input type="submit" value="로그인하기">
     </form>
@@ -36,7 +36,7 @@
 
             alert("input태그의 type속성 : " + eVar.type);
 
-            if(!frm.id.value) {
+            if(!frm.num.value) {
                 alert("아이디를 입력하세요")
                 return false;
             }
@@ -44,7 +44,7 @@
     </script>
 
     <form name="frm2">
-        아이디 : <input type="text" name="id">
+        아이디 : <input type="text" name="num">
         <br>
         <input type="button" value="로그인하기"
             onclick="formValidate2(this.form, this, this.value);">
