@@ -28,6 +28,7 @@
         var count = 0;
 
         window.onload = function() {
+            
             rndNum = parseInt((Math.random() * 100) + 1);
             console.log("정답 : ", rndNum);
         }
@@ -38,11 +39,15 @@
 
             if(!frm.num.value) {
                 alert("숫자를 입력하세요")
+                frm.num.focus();
+                frm.num.value = 1;
                 img.src = "./images/error.jpg";
                 return false;
             }
             if(frm.num.value <= 1 || frm.num.value >= 100) {
                 alert("1~100사이의 숫자를 입력하세요")
+                frm.num.focus();
+                frm.num.value = 1;
                 img.src = "./images/error.jpg";
                 return false;
             }
@@ -89,7 +94,7 @@
         <h2>시도횟수 : <span id="count">0회</span></h2>
         <span style="font-size: 1.5em;">숫자입력 :</span>       
          
-        <input type="number" name="num">
+        <input type="number" name="num" max="100" min="1">
 
         <input type="button" value="확인" onclick="check(this.form);">
 
