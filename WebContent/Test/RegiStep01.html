@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실명확인</title>
+    <style>
+        input[type="submit"] {
+            border: black 1px solid;
+            background-color: white;
+        }
+        input[type="submit"]:hover {
+            background-color: #e5e5e5;
+        }
+
+    </style>
+
+    <script>
+        function check(){
+
+            jumin1 = document.getElementById("jumin1");
+            jumin2 = document.getElementById("jumin2");
+            name = document.getElementById("name");
+
+            if(jumin1.value == "") {
+                alert("주민번호 앞자리를 입력해주세요");
+                jumin1.focus();
+                return false;
+            }
+            if(jumin2.value == "") {
+                alert("주민번호 뒷자리를 입력해주세요");
+                jumin2.focus();
+                return false;
+            }
+            if(name.value == "") {
+                alert("이름을 입력해주세요");
+                name.focus();
+                return false;
+            }
+
+            if(jumin1.value.length < 6){
+                alert("주민번호 앞자리를 다시 입력해주세요");
+                jumin1.focus();
+                return false;
+            }
+            if(jumin2.value.length < 7){
+                alert("주민번호 뒷자리를 다시 입력해주세요");
+                jumin2.focus();
+                return false;
+            }
+            
+        }
+        function fnJuminFocus(obj) {
+                
+            jumin2 = document.getElementById("jumin2");
+    
+            if(obj.value.length >= 6){
+                jumin2.focus();
+            }
+        }
+            
+    </script>
+</head>
+<body>
+    
+    <form name="first_form" action="RegiStep02.html" method="GET">
+        <table>
+            <tr>
+                <td id="text">주민번호</td> 
+                <td>
+                    <input type="text" name="jumin1" id="jumin1" maxlength="6"
+                        onkeyup="fnJuminFocus(this);"> - 
+                    <input type="text" name="jumin2" id="jumin2" maxlength="7">
+                </td>
+            </tr>
+            <tr>
+                <td id="text">이름</td>
+                <td>
+                    <input type="text" name="name" id="name">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"  align = 'right' >
+                    <input type="submit" value="다 음" id="sub" onclick="check();">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+
+
+
+</body>
+</html>
