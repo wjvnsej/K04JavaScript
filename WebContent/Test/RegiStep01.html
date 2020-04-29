@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>실명확인</title>
     <style>
-        input[type="submit"] {
+        input[type="button"] {
             border: black 1px solid;
             background-color: white;
+            width: 170px;
         }
-        input[type="submit"]:hover {
+        input[type="button"]:hover {
             background-color: #e5e5e5;
         }
 
@@ -49,6 +50,8 @@
                 return false;
             }
             
+            location.href = "./RegiStep02.html";
+            
         }
         function fnJuminFocus(obj) {
                 
@@ -63,32 +66,30 @@
 </head>
 <body>
     
-    <form name="first_form" action="RegiStep02.html" method="GET">
-        <table>
-            <tr>
-                <td id="text">주민번호</td> 
-                <td>
-                    <input type="text" name="jumin1" id="jumin1" maxlength="6"
-                        onkeyup="fnJuminFocus(this);"> - 
-                    <input type="text" name="jumin2" id="jumin2" maxlength="7">
-                </td>
-            </tr>
-            <tr>
-                <td id="text">이름</td>
-                <td>
-                    <input type="text" name="name" id="name">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2"  align = 'right' >
-                    <input type="submit" value="다 음" id="sub" onclick="check();">
-                </td>
-            </tr>
+<form name="first_form">
+    <table>
+        <tr>
+            <td id="text">주민번호</td> 
+            <td>
+                <input type="text" name="jumin1" id="jumin1" maxlength="6"
+                    onkeyup="fnJuminFocus(this);"> - 
+                <input type="password" name="jumin2" id="jumin2" maxlength="7">
+            </td>
+        </tr>
+        <tr>
+            <td id="text">이름</td>
+            <td>
+                <input type="text" name="name" id="name">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"  align = 'right' >
+                <input type="button" value="다 음" onclick="check();">
+            </td>
+        </tr>
 
-        </table>
-    </form>
-
-
+    </table>
+</form>
 
 </body>
 </html>

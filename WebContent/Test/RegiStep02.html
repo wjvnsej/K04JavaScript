@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <style>
-        input[type="submit"] {
+        input[type="button"] {
             border: black 1px solid;
             background-color: white;
+            width: 85px;
         }
-        input[type="submit"]:hover {
+        input[type="button"]:hover {
             background-color: #e5e5e5;
         }
 
@@ -39,25 +40,28 @@
                 return false;
             }
 
-            if(!(mail.value.indexOf('@') != -1 || mail.value.indexOf('.') != -1)){
-                alert("이메일을 제대로 입력해주세요");
+            if(mail.value.indexOf('@') == -1 || mail.value.indexOf('.') == -1){
+                alert("이메일형식이 맞지 않습니다. 다시 입력하세요.");
                 mail.focus();
                 return false;
             }
-            
-            for(var i = 0; i < gender.length; i++){
-                if(gender[i].checked == false){
-                    alert("성별을 체크해주세요");
-                    return false;
-                }
-            }
 
+            var gender_chk = 0;
+            for(var i = 0; i < gender.length; i++) {
+                if(gender[i].checked == true) gender_chk++;
+            }
+            if(gender_chk < 1) {
+                alert("성별을 선택해주세요");
+                return false;
+            }
+            
+            document.second_form.submit();
         }
     </script>
 </head>
 <body>
 
-    <form name="second_form" action="RegiStep03.jsp" method="GET">
+    <form name="second_form" action="RegiStep03.jsp" method="POST">
         <table>
             <tr>
                 <td id="text">아이디</td> 
@@ -81,21 +85,18 @@
                 <td id="text">성별</td>
                 <td>
                     <label>
-                        <input type="radio" name="gender" value="man" />남
+                        <input type="radio" name="gender" value="남자" />남
                     </label>
                     <label>
-                        <input type="radio" name="gender" value="woman"/>여
+                        <input type="radio" name="gender" value="여자"/>여
                     </label>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <a href="./RegiStep01.html">
-                        <input type="button" value="이 전">
-                    </a>
-                </td>
-                <td>
-                    <input type="submit" value="다 음" id="sub" onclick="check();">
+                <td colspan="2" align="right">
+                    <input type="button" value="이 전" onclick="location.href = './RegiStep01.html';">
+                    
+                    <input type="button" value="다 음" onclick="check();">
                 </td>
             </tr>
 
